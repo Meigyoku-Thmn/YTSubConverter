@@ -14,6 +14,7 @@ namespace Arc.YTSubConverter.Shared.Formats
     {
         private const string ZeroWidthSpace = "\x200B";
         private const string PaddingSpace = "\x200B \x200B"; // Surround with zwsp's so we can recognize and remove it during reverse conversion
+        private const string PaddingNoSpace = "";
 
         private static readonly Size ReferenceVideoDimensions = new Size(1280, 720);
 
@@ -643,16 +644,18 @@ namespace Arc.YTSubConverter.Shared.Formats
                     continue;
                 }
 
+                var padding = section.NoSpaceInPadding ? PaddingNoSpace : PaddingSpace;
+
                 if (i == 0 || line.Sections[i - 1].Text.EndsWith("\r\n"))
                 {
                     line.Sections.Insert(i + 0, CreatePaddingSection(hiddenSectionTemplate, ZeroWidthSpace, section.StartOffset));
-                    line.Sections.Insert(i + 1, CreatePaddingSection(section, PaddingSpace, section.StartOffset));
+                    line.Sections.Insert(i + 1, CreatePaddingSection(section, padding, section.StartOffset));
                     nextSectionIdx += 2;
                 }
 
                 if (nextSectionIdx == line.Sections.Count || line.Sections[nextSectionIdx].Text.StartsWith("\r\n"))
                 {
-                    line.Sections.Insert(nextSectionIdx + 0, CreatePaddingSection(section, PaddingSpace, section.StartOffset));
+                    line.Sections.Insert(nextSectionIdx + 0, CreatePaddingSection(section, padding, section.StartOffset));
                     line.Sections.Insert(nextSectionIdx + 1, CreatePaddingSection(hiddenSectionTemplate, ZeroWidthSpace, section.StartOffset));
                     nextSectionIdx += 2;
                 }
@@ -745,8 +748,11 @@ namespace Arc.YTSubConverter.Shared.Formats
             int fontStyleId = GetFontStyleId(format.Font);
             if (fontStyleId != 0)
                 writer.WriteAttributeString("fs", fontStyleId.ToString());
-            
-            writer.WriteAttributeString("sz", GetYouTubeFontScale(format.Scale).ToString());
+            else if (format.PreventFontNameOverriding)
+                writer.WriteAttributeString("fs", "4");
+
+            if (!format.AllowFontSizeOverriding)
+                writer.WriteAttributeString("sz", GetYouTubeFontScale(format.Scale).ToString());
 
             if (format.Offset != OffsetType.Regular)
                 writer.WriteAttributeString("of", GetOffsetTypeId(format.Offset).ToString());
@@ -760,13 +766,16 @@ namespace Arc.YTSubConverter.Shared.Formats
             if (format.Underline)
                 writer.WriteAttributeString("u", "1");
 
-            writer.WriteAttributeString("fc", ColorUtil.ToHtml(format.ForeColor.IsEmpty ? Color.Black : format.ForeColor));
-            writer.WriteAttributeString("fo", format.ForeColor.A.ToString());
+            if (!format.AllowFGAndBGOverriding)
+            {
+                writer.WriteAttributeString("fc", ColorUtil.ToHtml(format.ForeColor.IsEmpty ? Color.Black : format.ForeColor));
+                writer.WriteAttributeString("fo", format.ForeColor.A.ToString());
 
-            if (format.BackColor.A > 0)
-                writer.WriteAttributeString("bc", ColorUtil.ToHtml(format.BackColor));
+                if (format.BackColor.A > 0)
+                    writer.WriteAttributeString("bc", ColorUtil.ToHtml(format.BackColor));
 
-            writer.WriteAttributeString("bo", format.BackColor.A.ToString());
+                writer.WriteAttributeString("bo", format.BackColor.A.ToString());
+            }
 
             if (format.ShadowColors.Count > 0)
             {

@@ -36,6 +36,11 @@
             this._brwPreview = new System.Windows.Forms.WebBrowser();
             this._pnlOptions = new System.Windows.Forms.Panel();
             this._pnlKaraokeType = new System.Windows.Forms.Panel();
+            this._chkClearFontSize = new System.Windows.Forms.CheckBox();
+            this._chkKeepFontName = new System.Windows.Forms.CheckBox();
+            this._lblAdvancedConfig = new System.Windows.Forms.Label();
+            this._chkNoSpacePadding = new System.Windows.Forms.CheckBox();
+            this._chkClearBGAndFGStyle = new System.Windows.Forms.CheckBox();
             this._btnCurrentWordShadowColor = new System.Windows.Forms.Button();
             this._btnCurrentWordOutlineColor = new System.Windows.Forms.Button();
             this._btnCurrentWordTextColor = new System.Windows.Forms.Button();
@@ -81,7 +86,8 @@
             // _spltStyleOptions
             // 
             this._spltStyleOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._spltStyleOptions.Location = new System.Drawing.Point(5, 21);
+            this._spltStyleOptions.Location = new System.Drawing.Point(7, 27);
+            this._spltStyleOptions.Margin = new System.Windows.Forms.Padding(4);
             this._spltStyleOptions.Name = "_spltStyleOptions";
             // 
             // _spltStyleOptions.Panel1
@@ -93,8 +99,9 @@
             this._spltStyleOptions.Panel2.Controls.Add(this._btnBackgroundImage);
             this._spltStyleOptions.Panel2.Controls.Add(this._brwPreview);
             this._spltStyleOptions.Panel2.Controls.Add(this._pnlOptions);
-            this._spltStyleOptions.Size = new System.Drawing.Size(763, 328);
-            this._spltStyleOptions.SplitterDistance = 257;
+            this._spltStyleOptions.Size = new System.Drawing.Size(1202, 438);
+            this._spltStyleOptions.SplitterDistance = 396;
+            this._spltStyleOptions.SplitterWidth = 5;
             this._spltStyleOptions.TabIndex = 5;
             // 
             // _lstStyles
@@ -102,18 +109,21 @@
             this._lstStyles.Dock = System.Windows.Forms.DockStyle.Fill;
             this._lstStyles.FormattingEnabled = true;
             this._lstStyles.IntegralHeight = false;
-            this._lstStyles.ItemHeight = 12;
+            this._lstStyles.ItemHeight = 16;
             this._lstStyles.Location = new System.Drawing.Point(0, 0);
+            this._lstStyles.Margin = new System.Windows.Forms.Padding(4);
             this._lstStyles.Name = "_lstStyles";
-            this._lstStyles.Size = new System.Drawing.Size(257, 328);
+            this._lstStyles.Size = new System.Drawing.Size(396, 438);
             this._lstStyles.TabIndex = 0;
             this._lstStyles.SelectedIndexChanged += new System.EventHandler(this._lstStyles_SelectedIndexChanged);
             // 
             // _btnBackgroundImage
             // 
-            this._btnBackgroundImage.Location = new System.Drawing.Point(469, 131);
+            this._btnBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnBackgroundImage.Location = new System.Drawing.Point(746, 175);
+            this._btnBackgroundImage.Margin = new System.Windows.Forms.Padding(4);
             this._btnBackgroundImage.Name = "_btnBackgroundImage";
-            this._btnBackgroundImage.Size = new System.Drawing.Size(29, 21);
+            this._btnBackgroundImage.Size = new System.Drawing.Size(39, 28);
             this._btnBackgroundImage.TabIndex = 7;
             this._btnBackgroundImage.Text = "...";
             this._btnBackgroundImage.UseVisualStyleBackColor = true;
@@ -124,10 +134,11 @@
             this._brwPreview.AllowWebBrowserDrop = false;
             this._brwPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this._brwPreview.IsWebBrowserContextMenuEnabled = false;
-            this._brwPreview.Location = new System.Drawing.Point(0, 126);
-            this._brwPreview.MinimumSize = new System.Drawing.Size(20, 18);
+            this._brwPreview.Location = new System.Drawing.Point(0, 168);
+            this._brwPreview.Margin = new System.Windows.Forms.Padding(4);
+            this._brwPreview.MinimumSize = new System.Drawing.Size(27, 24);
             this._brwPreview.Name = "_brwPreview";
-            this._brwPreview.Size = new System.Drawing.Size(502, 202);
+            this._brwPreview.Size = new System.Drawing.Size(801, 270);
             this._brwPreview.TabIndex = 0;
             this._brwPreview.WebBrowserShortcutsEnabled = false;
             // 
@@ -137,12 +148,18 @@
             this._pnlOptions.Controls.Add(this._pnlShadowType);
             this._pnlOptions.Dock = System.Windows.Forms.DockStyle.Top;
             this._pnlOptions.Location = new System.Drawing.Point(0, 0);
+            this._pnlOptions.Margin = new System.Windows.Forms.Padding(4);
             this._pnlOptions.Name = "_pnlOptions";
-            this._pnlOptions.Size = new System.Drawing.Size(502, 126);
+            this._pnlOptions.Size = new System.Drawing.Size(801, 168);
             this._pnlOptions.TabIndex = 6;
             // 
             // _pnlKaraokeType
             // 
+            this._pnlKaraokeType.Controls.Add(this._chkClearFontSize);
+            this._pnlKaraokeType.Controls.Add(this._chkKeepFontName);
+            this._pnlKaraokeType.Controls.Add(this._lblAdvancedConfig);
+            this._pnlKaraokeType.Controls.Add(this._chkNoSpacePadding);
+            this._pnlKaraokeType.Controls.Add(this._chkClearBGAndFGStyle);
             this._pnlKaraokeType.Controls.Add(this._btnCurrentWordShadowColor);
             this._pnlKaraokeType.Controls.Add(this._btnCurrentWordOutlineColor);
             this._pnlKaraokeType.Controls.Add(this._btnCurrentWordTextColor);
@@ -155,17 +172,73 @@
             this._pnlKaraokeType.Controls.Add(this._chkHighlightCurrentWord);
             this._pnlKaraokeType.Controls.Add(this._chkKaraoke);
             this._pnlKaraokeType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._pnlKaraokeType.Location = new System.Drawing.Point(198, 0);
+            this._pnlKaraokeType.Location = new System.Drawing.Point(187, 0);
+            this._pnlKaraokeType.Margin = new System.Windows.Forms.Padding(4);
             this._pnlKaraokeType.Name = "_pnlKaraokeType";
-            this._pnlKaraokeType.Size = new System.Drawing.Size(304, 126);
+            this._pnlKaraokeType.Size = new System.Drawing.Size(614, 168);
             this._pnlKaraokeType.TabIndex = 6;
+            // 
+            // _chkClearFontSize
+            // 
+            this._chkClearFontSize.AutoSize = true;
+            this._chkClearFontSize.Location = new System.Drawing.Point(303, 61);
+            this._chkClearFontSize.Name = "_chkClearFontSize";
+            this._chkClearFontSize.Size = new System.Drawing.Size(186, 21);
+            this._chkClearFontSize.TabIndex = 16;
+            this._chkClearFontSize.Text = "Allow font size overriding";
+            this._chkClearFontSize.UseVisualStyleBackColor = true;
+            this._chkClearFontSize.CheckedChanged += new System.EventHandler(this._chkClearFontSize_CheckedChanged);
+            // 
+            // _chkKeepFontName
+            // 
+            this._chkKeepFontName.AutoSize = true;
+            this._chkKeepFontName.Location = new System.Drawing.Point(303, 34);
+            this._chkKeepFontName.Name = "_chkKeepFontName";
+            this._chkKeepFontName.Size = new System.Drawing.Size(214, 21);
+            this._chkKeepFontName.TabIndex = 15;
+            this._chkKeepFontName.Text = "Prevent font family overriding";
+            this._chkKeepFontName.UseVisualStyleBackColor = true;
+            this._chkKeepFontName.CheckedChanged += new System.EventHandler(this._chkKeepFontName_CheckedChanged);
+            // 
+            // _lblAdvancedConfig
+            // 
+            this._lblAdvancedConfig.AutoSize = true;
+            this._lblAdvancedConfig.Location = new System.Drawing.Point(285, 10);
+            this._lblAdvancedConfig.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._lblAdvancedConfig.Name = "_lblAdvancedConfig";
+            this._lblAdvancedConfig.Size = new System.Drawing.Size(254, 17);
+            this._lblAdvancedConfig.TabIndex = 4;
+            this._lblAdvancedConfig.Text = "Advanced configuration for *.ytt output:";
+            // 
+            // _chkNoSpacePadding
+            // 
+            this._chkNoSpacePadding.AutoSize = true;
+            this._chkNoSpacePadding.Location = new System.Drawing.Point(303, 115);
+            this._chkNoSpacePadding.Name = "_chkNoSpacePadding";
+            this._chkNoSpacePadding.Size = new System.Drawing.Size(202, 21);
+            this._chkNoSpacePadding.TabIndex = 14;
+            this._chkNoSpacePadding.Text = "Don\'t use space in padding";
+            this._chkNoSpacePadding.UseVisualStyleBackColor = true;
+            this._chkNoSpacePadding.CheckedChanged += new System.EventHandler(this._chkNoSpacePadding_CheckedChanged);
+            // 
+            // _chkClearBGAndFGStyle
+            // 
+            this._chkClearBGAndFGStyle.AutoSize = true;
+            this._chkClearBGAndFGStyle.Location = new System.Drawing.Point(303, 88);
+            this._chkClearBGAndFGStyle.Name = "_chkClearBGAndFGStyle";
+            this._chkClearBGAndFGStyle.Size = new System.Drawing.Size(310, 21);
+            this._chkClearBGAndFGStyle.TabIndex = 12;
+            this._chkClearBGAndFGStyle.Text = "Allow background and foreground overriding";
+            this._chkClearBGAndFGStyle.UseVisualStyleBackColor = true;
+            this._chkClearBGAndFGStyle.CheckedChanged += new System.EventHandler(this._chkClearBGAndFGStyle_CheckedChanged);
             // 
             // _btnCurrentWordShadowColor
             // 
             this._btnCurrentWordShadowColor.Enabled = false;
-            this._btnCurrentWordShadowColor.Location = new System.Drawing.Point(190, 99);
+            this._btnCurrentWordShadowColor.Location = new System.Drawing.Point(233, 130);
+            this._btnCurrentWordShadowColor.Margin = new System.Windows.Forms.Padding(4);
             this._btnCurrentWordShadowColor.Name = "_btnCurrentWordShadowColor";
-            this._btnCurrentWordShadowColor.Size = new System.Drawing.Size(35, 19);
+            this._btnCurrentWordShadowColor.Size = new System.Drawing.Size(47, 25);
             this._btnCurrentWordShadowColor.TabIndex = 10;
             this._btnCurrentWordShadowColor.Text = "...";
             this._btnCurrentWordShadowColor.UseVisualStyleBackColor = true;
@@ -174,9 +247,10 @@
             // _btnCurrentWordOutlineColor
             // 
             this._btnCurrentWordOutlineColor.Enabled = false;
-            this._btnCurrentWordOutlineColor.Location = new System.Drawing.Point(190, 73);
+            this._btnCurrentWordOutlineColor.Location = new System.Drawing.Point(233, 95);
+            this._btnCurrentWordOutlineColor.Margin = new System.Windows.Forms.Padding(4);
             this._btnCurrentWordOutlineColor.Name = "_btnCurrentWordOutlineColor";
-            this._btnCurrentWordOutlineColor.Size = new System.Drawing.Size(35, 19);
+            this._btnCurrentWordOutlineColor.Size = new System.Drawing.Size(47, 25);
             this._btnCurrentWordOutlineColor.TabIndex = 8;
             this._btnCurrentWordOutlineColor.Text = "...";
             this._btnCurrentWordOutlineColor.UseVisualStyleBackColor = true;
@@ -185,9 +259,10 @@
             // _btnCurrentWordTextColor
             // 
             this._btnCurrentWordTextColor.Enabled = false;
-            this._btnCurrentWordTextColor.Location = new System.Drawing.Point(190, 47);
+            this._btnCurrentWordTextColor.Location = new System.Drawing.Point(233, 61);
+            this._btnCurrentWordTextColor.Margin = new System.Windows.Forms.Padding(4);
             this._btnCurrentWordTextColor.Name = "_btnCurrentWordTextColor";
-            this._btnCurrentWordTextColor.Size = new System.Drawing.Size(35, 19);
+            this._btnCurrentWordTextColor.Size = new System.Drawing.Size(47, 25);
             this._btnCurrentWordTextColor.TabIndex = 6;
             this._btnCurrentWordTextColor.Text = "...";
             this._btnCurrentWordTextColor.UseVisualStyleBackColor = true;
@@ -196,27 +271,30 @@
             // _txtCurrentWordShadowColor
             // 
             this._txtCurrentWordShadowColor.Enabled = false;
-            this._txtCurrentWordShadowColor.Location = new System.Drawing.Point(119, 99);
+            this._txtCurrentWordShadowColor.Location = new System.Drawing.Point(140, 131);
+            this._txtCurrentWordShadowColor.Margin = new System.Windows.Forms.Padding(4);
             this._txtCurrentWordShadowColor.Name = "_txtCurrentWordShadowColor";
-            this._txtCurrentWordShadowColor.Size = new System.Drawing.Size(65, 19);
+            this._txtCurrentWordShadowColor.Size = new System.Drawing.Size(85, 22);
             this._txtCurrentWordShadowColor.TabIndex = 9;
             this._txtCurrentWordShadowColor.TextChanged += new System.EventHandler(this._txtCurrentWordShadowColor_TextChanged);
             // 
             // _txtCurrentWordOutlineColor
             // 
             this._txtCurrentWordOutlineColor.Enabled = false;
-            this._txtCurrentWordOutlineColor.Location = new System.Drawing.Point(119, 73);
+            this._txtCurrentWordOutlineColor.Location = new System.Drawing.Point(140, 96);
+            this._txtCurrentWordOutlineColor.Margin = new System.Windows.Forms.Padding(4);
             this._txtCurrentWordOutlineColor.Name = "_txtCurrentWordOutlineColor";
-            this._txtCurrentWordOutlineColor.Size = new System.Drawing.Size(65, 19);
+            this._txtCurrentWordOutlineColor.Size = new System.Drawing.Size(85, 22);
             this._txtCurrentWordOutlineColor.TabIndex = 7;
             this._txtCurrentWordOutlineColor.TextChanged += new System.EventHandler(this._txtCurrentWordOutlineColor_TextChanged);
             // 
             // _txtCurrentWordTextColor
             // 
             this._txtCurrentWordTextColor.Enabled = false;
-            this._txtCurrentWordTextColor.Location = new System.Drawing.Point(119, 47);
+            this._txtCurrentWordTextColor.Location = new System.Drawing.Point(140, 62);
+            this._txtCurrentWordTextColor.Margin = new System.Windows.Forms.Padding(4);
             this._txtCurrentWordTextColor.Name = "_txtCurrentWordTextColor";
-            this._txtCurrentWordTextColor.Size = new System.Drawing.Size(65, 19);
+            this._txtCurrentWordTextColor.Size = new System.Drawing.Size(85, 22);
             this._txtCurrentWordTextColor.TabIndex = 5;
             this._txtCurrentWordTextColor.TextChanged += new System.EventHandler(this._txtCurrentWordTextColor_TextChanged);
             // 
@@ -224,9 +302,10 @@
             // 
             this._lblCurrentWordShadowColor.AutoSize = true;
             this._lblCurrentWordShadowColor.Enabled = false;
-            this._lblCurrentWordShadowColor.Location = new System.Drawing.Point(31, 102);
+            this._lblCurrentWordShadowColor.Location = new System.Drawing.Point(22, 134);
+            this._lblCurrentWordShadowColor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblCurrentWordShadowColor.Name = "_lblCurrentWordShadowColor";
-            this._lblCurrentWordShadowColor.Size = new System.Drawing.Size(75, 12);
+            this._lblCurrentWordShadowColor.Size = new System.Drawing.Size(97, 17);
             this._lblCurrentWordShadowColor.TabIndex = 4;
             this._lblCurrentWordShadowColor.Text = "Shadow color:";
             // 
@@ -234,9 +313,10 @@
             // 
             this._lblCurrentWordOutlineColor.AutoSize = true;
             this._lblCurrentWordOutlineColor.Enabled = false;
-            this._lblCurrentWordOutlineColor.Location = new System.Drawing.Point(31, 76);
+            this._lblCurrentWordOutlineColor.Location = new System.Drawing.Point(22, 99);
+            this._lblCurrentWordOutlineColor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblCurrentWordOutlineColor.Name = "_lblCurrentWordOutlineColor";
-            this._lblCurrentWordOutlineColor.Size = new System.Drawing.Size(72, 12);
+            this._lblCurrentWordOutlineColor.Size = new System.Drawing.Size(92, 17);
             this._lblCurrentWordOutlineColor.TabIndex = 3;
             this._lblCurrentWordOutlineColor.Text = "Outline color:";
             // 
@@ -244,9 +324,10 @@
             // 
             this._lblCurrentWordTextColor.AutoSize = true;
             this._lblCurrentWordTextColor.Enabled = false;
-            this._lblCurrentWordTextColor.Location = new System.Drawing.Point(31, 52);
+            this._lblCurrentWordTextColor.Location = new System.Drawing.Point(22, 65);
+            this._lblCurrentWordTextColor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblCurrentWordTextColor.Name = "_lblCurrentWordTextColor";
-            this._lblCurrentWordTextColor.Size = new System.Drawing.Size(59, 12);
+            this._lblCurrentWordTextColor.Size = new System.Drawing.Size(74, 17);
             this._lblCurrentWordTextColor.TabIndex = 2;
             this._lblCurrentWordTextColor.Text = "Text color:";
             // 
@@ -254,9 +335,10 @@
             // 
             this._chkHighlightCurrentWord.AutoSize = true;
             this._chkHighlightCurrentWord.Enabled = false;
-            this._chkHighlightCurrentWord.Location = new System.Drawing.Point(6, 29);
+            this._chkHighlightCurrentWord.Location = new System.Drawing.Point(8, 34);
+            this._chkHighlightCurrentWord.Margin = new System.Windows.Forms.Padding(4);
             this._chkHighlightCurrentWord.Name = "_chkHighlightCurrentWord";
-            this._chkHighlightCurrentWord.Size = new System.Drawing.Size(137, 16);
+            this._chkHighlightCurrentWord.Size = new System.Drawing.Size(168, 21);
             this._chkHighlightCurrentWord.TabIndex = 1;
             this._chkHighlightCurrentWord.Text = "Highlight current word";
             this._chkHighlightCurrentWord.UseVisualStyleBackColor = true;
@@ -265,9 +347,10 @@
             // _chkKaraoke
             // 
             this._chkKaraoke.AutoSize = true;
-            this._chkKaraoke.Location = new System.Drawing.Point(6, 7);
+            this._chkKaraoke.Location = new System.Drawing.Point(8, 9);
+            this._chkKaraoke.Margin = new System.Windows.Forms.Padding(4);
             this._chkKaraoke.Name = "_chkKaraoke";
-            this._chkKaraoke.Size = new System.Drawing.Size(106, 16);
+            this._chkKaraoke.Size = new System.Drawing.Size(131, 21);
             this._chkKaraoke.TabIndex = 0;
             this._chkKaraoke.Text = "Use for karaoke";
             this._chkKaraoke.UseVisualStyleBackColor = true;
@@ -282,16 +365,18 @@
             this._pnlShadowType.Controls.Add(this._lblShadowTypes);
             this._pnlShadowType.Dock = System.Windows.Forms.DockStyle.Left;
             this._pnlShadowType.Location = new System.Drawing.Point(0, 0);
+            this._pnlShadowType.Margin = new System.Windows.Forms.Padding(4);
             this._pnlShadowType.Name = "_pnlShadowType";
-            this._pnlShadowType.Size = new System.Drawing.Size(198, 126);
+            this._pnlShadowType.Size = new System.Drawing.Size(187, 168);
             this._pnlShadowType.TabIndex = 5;
             // 
             // _chkHardShadow
             // 
             this._chkHardShadow.AutoSize = true;
-            this._chkHardShadow.Location = new System.Drawing.Point(26, 81);
+            this._chkHardShadow.Location = new System.Drawing.Point(41, 131);
+            this._chkHardShadow.Margin = new System.Windows.Forms.Padding(4);
             this._chkHardShadow.Name = "_chkHardShadow";
-            this._chkHardShadow.Size = new System.Drawing.Size(90, 16);
+            this._chkHardShadow.Size = new System.Drawing.Size(113, 21);
             this._chkHardShadow.TabIndex = 3;
             this._chkHardShadow.Text = "Hard shadow";
             this._chkHardShadow.UseVisualStyleBackColor = true;
@@ -300,9 +385,10 @@
             // _chkSoftShadow
             // 
             this._chkSoftShadow.AutoSize = true;
-            this._chkSoftShadow.Location = new System.Drawing.Point(26, 64);
+            this._chkSoftShadow.Location = new System.Drawing.Point(41, 102);
+            this._chkSoftShadow.Margin = new System.Windows.Forms.Padding(4);
             this._chkSoftShadow.Name = "_chkSoftShadow";
-            this._chkSoftShadow.Size = new System.Drawing.Size(87, 16);
+            this._chkSoftShadow.Size = new System.Drawing.Size(107, 21);
             this._chkSoftShadow.TabIndex = 2;
             this._chkSoftShadow.Text = "Soft shadow";
             this._chkSoftShadow.UseVisualStyleBackColor = true;
@@ -311,9 +397,10 @@
             // _chkBevel
             // 
             this._chkBevel.AutoSize = true;
-            this._chkBevel.Location = new System.Drawing.Point(26, 47);
+            this._chkBevel.Location = new System.Drawing.Point(41, 73);
+            this._chkBevel.Margin = new System.Windows.Forms.Padding(4);
             this._chkBevel.Name = "_chkBevel";
-            this._chkBevel.Size = new System.Drawing.Size(53, 16);
+            this._chkBevel.Size = new System.Drawing.Size(65, 21);
             this._chkBevel.TabIndex = 1;
             this._chkBevel.Text = "Bevel";
             this._chkBevel.UseVisualStyleBackColor = true;
@@ -322,9 +409,10 @@
             // _chkGlow
             // 
             this._chkGlow.AutoSize = true;
-            this._chkGlow.Location = new System.Drawing.Point(26, 30);
+            this._chkGlow.Location = new System.Drawing.Point(41, 44);
+            this._chkGlow.Margin = new System.Windows.Forms.Padding(4);
             this._chkGlow.Name = "_chkGlow";
-            this._chkGlow.Size = new System.Drawing.Size(49, 16);
+            this._chkGlow.Size = new System.Drawing.Size(61, 21);
             this._chkGlow.TabIndex = 0;
             this._chkGlow.Text = "Glow";
             this._chkGlow.UseVisualStyleBackColor = true;
@@ -333,9 +421,10 @@
             // _lblShadowTypes
             // 
             this._lblShadowTypes.AutoSize = true;
-            this._lblShadowTypes.Location = new System.Drawing.Point(8, 8);
+            this._lblShadowTypes.Location = new System.Drawing.Point(11, 11);
+            this._lblShadowTypes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblShadowTypes.Name = "_lblShadowTypes";
-            this._lblShadowTypes.Size = new System.Drawing.Size(78, 12);
+            this._lblShadowTypes.Size = new System.Drawing.Size(100, 17);
             this._lblShadowTypes.TabIndex = 3;
             this._lblShadowTypes.Text = "Shadow types:";
             // 
@@ -343,10 +432,11 @@
             // 
             this._txtInputFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._txtInputFile.Location = new System.Drawing.Point(20, 6);
+            this._txtInputFile.Location = new System.Drawing.Point(27, 8);
+            this._txtInputFile.Margin = new System.Windows.Forms.Padding(4);
             this._txtInputFile.Name = "_txtInputFile";
             this._txtInputFile.ReadOnly = true;
-            this._txtInputFile.Size = new System.Drawing.Size(721, 19);
+            this._txtInputFile.Size = new System.Drawing.Size(1145, 22);
             this._txtInputFile.TabIndex = 2;
             // 
             // _grpStyleOptions
@@ -355,10 +445,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._grpStyleOptions.Controls.Add(this._spltStyleOptions);
-            this._grpStyleOptions.Location = new System.Drawing.Point(15, 39);
+            this._grpStyleOptions.Location = new System.Drawing.Point(20, 52);
+            this._grpStyleOptions.Margin = new System.Windows.Forms.Padding(4);
             this._grpStyleOptions.Name = "_grpStyleOptions";
-            this._grpStyleOptions.Padding = new System.Windows.Forms.Padding(5, 9, 5, 5);
-            this._grpStyleOptions.Size = new System.Drawing.Size(773, 354);
+            this._grpStyleOptions.Padding = new System.Windows.Forms.Padding(7, 12, 7, 7);
+            this._grpStyleOptions.Size = new System.Drawing.Size(1216, 472);
             this._grpStyleOptions.TabIndex = 4;
             this._grpStyleOptions.TabStop = false;
             // 
@@ -369,9 +460,10 @@
             // _btnConvert
             // 
             this._btnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnConvert.Location = new System.Drawing.Point(659, 399);
+            this._btnConvert.Location = new System.Drawing.Point(1064, 532);
+            this._btnConvert.Margin = new System.Windows.Forms.Padding(4);
             this._btnConvert.Name = "_btnConvert";
-            this._btnConvert.Size = new System.Drawing.Size(129, 38);
+            this._btnConvert.Size = new System.Drawing.Size(172, 51);
             this._btnConvert.TabIndex = 5;
             this._btnConvert.Text = "Convert";
             this._btnConvert.UseVisualStyleBackColor = true;
@@ -381,9 +473,10 @@
             // 
             this._lblConversionSuccess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this._lblConversionSuccess.ForeColor = System.Drawing.Color.Green;
-            this._lblConversionSuccess.Location = new System.Drawing.Point(15, 399);
+            this._lblConversionSuccess.Location = new System.Drawing.Point(205, 532);
+            this._lblConversionSuccess.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblConversionSuccess.Name = "_lblConversionSuccess";
-            this._lblConversionSuccess.Size = new System.Drawing.Size(503, 38);
+            this._lblConversionSuccess.Size = new System.Drawing.Size(671, 51);
             this._lblConversionSuccess.TabIndex = 6;
             this._lblConversionSuccess.Text = "Status label";
             this._lblConversionSuccess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -392,9 +485,10 @@
             // _btnBrowse
             // 
             this._btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnBrowse.Location = new System.Drawing.Point(744, 6);
+            this._btnBrowse.Location = new System.Drawing.Point(1180, 7);
+            this._btnBrowse.Margin = new System.Windows.Forms.Padding(4);
             this._btnBrowse.Name = "_btnBrowse";
-            this._btnBrowse.Size = new System.Drawing.Size(44, 19);
+            this._btnBrowse.Size = new System.Drawing.Size(56, 25);
             this._btnBrowse.TabIndex = 0;
             this._btnBrowse.Text = "...";
             this._btnBrowse.UseVisualStyleBackColor = true;
@@ -404,9 +498,10 @@
             // 
             this._chkStyleOptions.Appearance = System.Windows.Forms.Appearance.Button;
             this._chkStyleOptions.AutoSize = true;
-            this._chkStyleOptions.Location = new System.Drawing.Point(24, 33);
+            this._chkStyleOptions.Location = new System.Drawing.Point(32, 44);
+            this._chkStyleOptions.Margin = new System.Windows.Forms.Padding(4);
             this._chkStyleOptions.Name = "_chkStyleOptions";
-            this._chkStyleOptions.Size = new System.Drawing.Size(82, 22);
+            this._chkStyleOptions.Size = new System.Drawing.Size(99, 27);
             this._chkStyleOptions.TabIndex = 0;
             this._chkStyleOptions.Text = "Style options";
             this._chkStyleOptions.UseVisualStyleBackColor = true;
@@ -416,9 +511,10 @@
             // 
             this._chkAutoConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this._chkAutoConvert.Appearance = System.Windows.Forms.Appearance.Button;
-            this._chkAutoConvert.Location = new System.Drawing.Point(524, 399);
+            this._chkAutoConvert.Location = new System.Drawing.Point(884, 532);
+            this._chkAutoConvert.Margin = new System.Windows.Forms.Padding(4);
             this._chkAutoConvert.Name = "_chkAutoConvert";
-            this._chkAutoConvert.Size = new System.Drawing.Size(129, 38);
+            this._chkAutoConvert.Size = new System.Drawing.Size(172, 51);
             this._chkAutoConvert.TabIndex = 7;
             this._chkAutoConvert.Text = "Autoconvert";
             this._chkAutoConvert.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -442,9 +538,9 @@
             // MainForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 449);
+            this.ClientSize = new System.Drawing.Size(1252, 599);
             this.Controls.Add(this._chkAutoConvert);
             this.Controls.Add(this._btnConvert);
             this.Controls.Add(this._chkStyleOptions);
@@ -454,6 +550,7 @@
             this.Controls.Add(this._lblConversionSuccess);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "YTSubConverter";
@@ -515,5 +612,10 @@
         private System.Windows.Forms.CheckBox _chkAutoConvert;
         private System.IO.FileSystemWatcher _subtitleRenameWatcher;
         private System.IO.FileSystemWatcher _subtitleModifyWatcher;
+        private System.Windows.Forms.CheckBox _chkClearBGAndFGStyle;
+        private System.Windows.Forms.CheckBox _chkNoSpacePadding;
+        private System.Windows.Forms.Label _lblAdvancedConfig;
+        private System.Windows.Forms.CheckBox _chkKeepFontName;
+        private System.Windows.Forms.CheckBox _chkClearFontSize;
     }
 }

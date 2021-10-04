@@ -136,6 +136,14 @@ namespace Arc.YTSubConverter.Shared
             set { CurrentWordShadowColor = ColorUtil.FromHtml(value); }
         }
 
+        public bool PreventFontNameOverriding { get; set; }
+
+        public bool AllowFontSizeOverriding { get; set; }
+
+        public bool AllowFGAndBGOverriding { get; set; }
+
+        public bool NoSpaceInPadding { get; set; }
+
         public string BackgroundImagePath
         {
             get;

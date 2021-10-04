@@ -21,6 +21,30 @@ namespace Arc.YTSubConverter.Shared
             Assign(other);
         }
 
+        public bool PreventFontNameOverriding
+        {
+            get;
+            set;
+        }
+
+        public bool AllowFontSizeOverriding
+        {
+            get;
+            set;
+        }
+
+        public bool AllowFGAndBGOverriding
+        {
+            get;
+            set;
+        }
+
+        public bool NoSpaceInPadding
+        {
+            get;
+            set;
+        }
+
         public string Text
         {
             get;
@@ -113,6 +137,10 @@ namespace Arc.YTSubConverter.Shared
 
         protected virtual void Assign(Section section)
         {
+            PreventFontNameOverriding = section.PreventFontNameOverriding;
+            AllowFontSizeOverriding = section.AllowFontSizeOverriding;
+            AllowFGAndBGOverriding = section.AllowFGAndBGOverriding;
+            NoSpaceInPadding = section.NoSpaceInPadding;
             Text = section.Text;
             Font = section.Font;
             Scale = section.Scale;

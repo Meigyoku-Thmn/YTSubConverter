@@ -307,6 +307,11 @@ namespace Arc.YTSubConverter.Shared.Formats.Ass
 
         internal void ApplyStyle(AssSection section, AssStyle style, AssStyleOptions options)
         {
+            section.PreventFontNameOverriding = options?.PreventFontNameOverriding ?? false;
+            section.AllowFontSizeOverriding = options?.AllowFontSizeOverriding ?? false;
+            section.AllowFGAndBGOverriding = options?.AllowFGAndBGOverriding ?? false;
+            section.NoSpaceInPadding = options?.NoSpaceInPadding ?? false;
+
             section.Font = style.Font;
             section.Scale = style.LineHeight / DefaultStyle.LineHeight;
             section.Bold = style.Bold;

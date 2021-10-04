@@ -109,7 +109,8 @@ namespace Arc.YTSubConverter.UI.Win
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format(Resources.FailedToLoadFile0, ex.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(string.Format(Resources.FailedToLoadFile0, ex),
+                    Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ClearUi();
             }
         }
@@ -137,7 +138,7 @@ namespace Arc.YTSubConverter.UI.Win
             _subtitleRenameWatcher.EnableRaisingEvents = false;
             _subtitleRenameWatcher.Path = Path.GetDirectoryName(filePath);
             _subtitleRenameWatcher.Filter = Path.GetFileNameWithoutExtension(filePath) + "_tmp_*" + Path.GetExtension(filePath);
-            
+
             _btnConvert.Enabled = true;
         }
 
@@ -223,6 +224,11 @@ namespace Arc.YTSubConverter.UI.Win
             _txtCurrentWordShadowColor.Enabled = _chkHighlightCurrentWord.Checked && style.HasShadow;
             _txtCurrentWordShadowColor.Text = _txtCurrentWordShadowColor.Enabled ? ColorUtil.ToHtml(currentWordShadowColor) : string.Empty;
             _btnCurrentWordShadowColor.Enabled = _txtCurrentWordShadowColor.Enabled;
+
+            _chkKeepFontName.Checked = options.PreventFontNameOverriding;
+            _chkClearFontSize.Checked = options.AllowFontSizeOverriding;
+            _chkClearBGAndFGStyle.Checked = options.AllowFGAndBGOverriding;
+            _chkNoSpacePadding.Checked = options.NoSpaceInPadding;
 
             UpdateBackgroundImageButton();
 
@@ -328,6 +334,26 @@ namespace Arc.YTSubConverter.UI.Win
             _dlgColor.Color = ColorUtil.FromHtml(_txtCurrentWordShadowColor.Text);
             if (_dlgColor.ShowDialog() == DialogResult.OK)
                 _txtCurrentWordShadowColor.Text = ColorUtil.ToHtml(_dlgColor.Color);
+        }
+
+        private void _chkKeepFontName_CheckedChanged(object sender, EventArgs e)
+        {
+            SelectedStyleOptions.PreventFontNameOverriding = _chkKeepFontName.Checked;
+        }
+
+        private void _chkClearFontSize_CheckedChanged(object sender, EventArgs e)
+        {
+            SelectedStyleOptions.AllowFontSizeOverriding = _chkClearFontSize.Checked;
+        }
+
+        private void _chkClearBGAndFGStyle_CheckedChanged(object sender, EventArgs e)
+        {
+            SelectedStyleOptions.AllowFGAndBGOverriding = _chkClearBGAndFGStyle.Checked;
+        }
+
+        private void _chkNoSpacePadding_CheckedChanged(object sender, EventArgs e)
+        {
+            SelectedStyleOptions.NoSpaceInPadding = _chkNoSpacePadding.Checked;
         }
 
         private void _btnBackgroundImage_Click(object sender, EventArgs e)
@@ -450,7 +476,7 @@ namespace Arc.YTSubConverter.UI.Win
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.ToString(), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
