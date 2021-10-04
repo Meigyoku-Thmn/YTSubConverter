@@ -1,3 +1,12 @@
+# About this fork
+Add 4 additional advanced settings that you can apply for each style:
+- Prevent font family from being overriden
+- Allow font size overriding
+- Allow background and foreground style overriding
+- Don't use space in padding
+
+---
+
 # YTSubConverter
 A tool for creating styled YouTube subtitles.
  
