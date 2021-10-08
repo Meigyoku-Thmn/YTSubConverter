@@ -1,4 +1,4 @@
-﻿namespace Arc.YTSubConverter.UI.Win
+﻿namespace YTSubConverter.UI.Win
 {
     partial class MainForm
     {
@@ -240,7 +240,6 @@
             this._btnCurrentWordShadowColor.Name = "_btnCurrentWordShadowColor";
             this._btnCurrentWordShadowColor.Size = new System.Drawing.Size(47, 25);
             this._btnCurrentWordShadowColor.TabIndex = 10;
-            this._btnCurrentWordShadowColor.Text = "...";
             this._btnCurrentWordShadowColor.UseVisualStyleBackColor = true;
             this._btnCurrentWordShadowColor.Click += new System.EventHandler(this._btnCurrentWordShadowColor_Click);
             // 
@@ -252,7 +251,6 @@
             this._btnCurrentWordOutlineColor.Name = "_btnCurrentWordOutlineColor";
             this._btnCurrentWordOutlineColor.Size = new System.Drawing.Size(47, 25);
             this._btnCurrentWordOutlineColor.TabIndex = 8;
-            this._btnCurrentWordOutlineColor.Text = "...";
             this._btnCurrentWordOutlineColor.UseVisualStyleBackColor = true;
             this._btnCurrentWordOutlineColor.Click += new System.EventHandler(this._btnCurrentWordOutlineColor_Click);
             // 
@@ -264,7 +262,6 @@
             this._btnCurrentWordTextColor.Name = "_btnCurrentWordTextColor";
             this._btnCurrentWordTextColor.Size = new System.Drawing.Size(47, 25);
             this._btnCurrentWordTextColor.TabIndex = 6;
-            this._btnCurrentWordTextColor.Text = "...";
             this._btnCurrentWordTextColor.UseVisualStyleBackColor = true;
             this._btnCurrentWordTextColor.Click += new System.EventHandler(this._btnCurrentWordTextColor_Click);
             // 
