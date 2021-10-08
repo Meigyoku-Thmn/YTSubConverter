@@ -8,13 +8,13 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using AppKit;
-using YTSubConverter.Shared;
-using YTSubConverter.Shared.Formats;
-using YTSubConverter.Shared.Formats.Ass;
-using YTSubConverter.Shared.Util;
+using Arc.YTSubConverter.Shared;
+using Arc.YTSubConverter.Shared.Formats;
+using Arc.YTSubConverter.Shared.Formats.Ass;
+using Arc.YTSubConverter.Shared.Util;
 using Foundation;
 
-namespace YTSubConverter.UI.Mac
+namespace Arc.YTSubConverter.UI.Mac
 {
     public partial class ViewController : NSViewController
     {
@@ -365,7 +365,7 @@ namespace YTSubConverter.UI.Mac
                 return;
 
             AssStyle style = _styles?[SelectedStyleOptions.Name];
-            _brwPreview.LoadHtmlString(HtmlStylePreviewGenerator.Generate(style, SelectedStyleOptions, _defaultStyle, 1), null);
+            _brwPreview.LoadHtmlString(StylePreviewGenerator.GenerateHtml(style, SelectedStyleOptions, _defaultStyle, 1), null);
         }
 
         partial void _chkAutoConvert_CheckedChanged(NSObject sender)

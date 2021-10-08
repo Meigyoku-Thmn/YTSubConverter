@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using YTSubConverter.Shared.Formats.Ass.KaraokeTypes;
+using Arc.YTSubConverter.Shared.Formats.Ass.KaraokeTypes;
 
-namespace YTSubConverter.Shared.Formats.Ass.Tags
+namespace Arc.YTSubConverter.Shared.Formats.Ass.Tags
 {
     internal class AssKaraokeTypeTagHandler : AssTagHandlerBase
     {

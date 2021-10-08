@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using YTSubConverter.Shared.Formats.Ass;
-using YTSubConverter.Shared.Util;
+using Arc.YTSubConverter.Shared.Formats.Ass;
+using Arc.YTSubConverter.Shared.Util;
 
-namespace YTSubConverter.Shared.Animations
+namespace Arc.YTSubConverter.Shared.Animations
 {
     internal static class Animator
     {

@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using YTSubConverter.Shared.Animations;
-using YTSubConverter.Shared.Util;
+using Arc.YTSubConverter.Shared.Animations;
+using Arc.YTSubConverter.Shared.Util;
 
-namespace YTSubConverter.Shared.Formats.Ass.Tags
+namespace Arc.YTSubConverter.Shared.Formats.Ass.Tags
 {
     internal class AssAlphaTagHandler : AssTagHandlerBase
     {

@@ -7,12 +7,12 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using YTSubConverter.Shared;
-using YTSubConverter.Shared.Formats;
-using YTSubConverter.Shared.Formats.Ass;
-using YTSubConverter.Shared.Util;
+using Arc.YTSubConverter.Shared;
+using Arc.YTSubConverter.Shared.Formats;
+using Arc.YTSubConverter.Shared.Formats.Ass;
+using Arc.YTSubConverter.Shared.Util;
 
-namespace YTSubConverter.UI.Win
+namespace Arc.YTSubConverter.UI.Win
 {
     public partial class MainForm : Form
     {
@@ -38,7 +38,7 @@ namespace YTSubConverter.UI.Win
             _builtinStyleNames = builtinStyleOptions.Select(o => o.Name).ToHashSet();
 
             ExpandCollapseStyleOptions();
-            ClearUI();
+            ClearUi();
         }
 
         private void LocalizeUI()
@@ -100,21 +100,22 @@ namespace YTSubConverter.UI.Win
 
         private void LoadFile(string filePath)
         {
-            ClearUI();
+            ClearUi();
 
             try
             {
                 SubtitleDocument doc = SubtitleDocument.Load(filePath);
-                PopulateUI(filePath, doc);
+                PopulateUi(filePath, doc);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format(Resources.FailedToLoadFile0, ex), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(string.Format(Resources.FailedToLoadFile0, ex),
+                    Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ClearUi();
             }
         }
 
-        private void PopulateUI(string filePath, SubtitleDocument document)
+        private void PopulateUi(string filePath, SubtitleDocument document)
         {
             _txtInputFile.Text = filePath;
 
@@ -151,17 +152,15 @@ namespace YTSubConverter.UI.Win
                     _styleOptions.Add(style.Name, new AssStyleOptions(style));
             }
 
-            string selectedStyleName = SelectedStyleOptions?.Name;
+            int selectedIndex = _lstStyles.SelectedIndex;
             _lstStyles.DataSource = document.Styles.Select(s => _styleOptions[s.Name]).ToList();
-
-            int styleIndex = document.Styles.IndexOf(s => s.Name == selectedStyleName);
-            if (styleIndex >= 0)
-                _lstStyles.SelectedIndex = styleIndex;
+            if (_lstStyles.Items.Count > selectedIndex)
+                _lstStyles.SelectedIndex = selectedIndex;
             else if (_lstStyles.Items.Count > 0)
                 _lstStyles.SelectedIndex = 0;
         }
 
-        private void ClearUI()
+        private void ClearUi()
         {
             _styles = null;
             _defaultStyle = null;
@@ -300,9 +299,7 @@ namespace YTSubConverter.UI.Win
 
         private void _txtCurrentWordTextColor_TextChanged(object sender, EventArgs e)
         {
-            Color textColor = ColorUtil.FromHtml(_txtCurrentWordTextColor.Text);
-            _btnCurrentWordTextColor.BackColor = textColor;
-            SelectedStyleOptions.CurrentWordTextColor = textColor;
+            SelectedStyleOptions.CurrentWordTextColor = ColorUtil.FromHtml(_txtCurrentWordTextColor.Text);
             UpdateStylePreview();
         }
 
@@ -315,9 +312,7 @@ namespace YTSubConverter.UI.Win
 
         private void _txtCurrentWordOutlineColor_TextChanged(object sender, EventArgs e)
         {
-            Color outlineColor = ColorUtil.FromHtml(_txtCurrentWordOutlineColor.Text);
-            _btnCurrentWordOutlineColor.BackColor = outlineColor;
-            SelectedStyleOptions.CurrentWordOutlineColor = outlineColor;
+            SelectedStyleOptions.CurrentWordOutlineColor = ColorUtil.FromHtml(_txtCurrentWordOutlineColor.Text);
             UpdateStylePreview();
         }
 
@@ -330,9 +325,7 @@ namespace YTSubConverter.UI.Win
 
         private void _txtCurrentWordShadowColor_TextChanged(object sender, EventArgs e)
         {
-            Color shadowColor = ColorUtil.FromHtml(_txtCurrentWordShadowColor.Text);
-            _btnCurrentWordShadowColor.BackColor = shadowColor;
-            SelectedStyleOptions.CurrentWordShadowColor = shadowColor;
+            SelectedStyleOptions.CurrentWordShadowColor = ColorUtil.FromHtml(_txtCurrentWordShadowColor.Text);
             UpdateStylePreview();
         }
 
@@ -402,7 +395,7 @@ namespace YTSubConverter.UI.Win
                 return;
 
             AssStyle style = _styles?[SelectedStyleOptions.Name];
-            _brwPreview.DocumentText = HtmlStylePreviewGenerator.Generate(style, SelectedStyleOptions, _defaultStyle, _windowsScaleFactor);
+            _brwPreview.DocumentText = StylePreviewGenerator.GenerateHtml(style, SelectedStyleOptions, _defaultStyle, _windowsScaleFactor);
         }
 
         private void _chkAutoConvert_CheckedChanged(object sender, EventArgs e)

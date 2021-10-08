@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace YTSubConverter.Shared.Util
+namespace Arc.YTSubConverter.Shared.Util
 {
     public static class CollectionExtensions
     {

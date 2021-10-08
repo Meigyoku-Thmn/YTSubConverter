@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace YTSubConverter.Shared.Util
+namespace Arc.YTSubConverter.Shared.Util
 {
     /// <summary>
     /// Converts between Aegisub line heights and real font sizes, as these

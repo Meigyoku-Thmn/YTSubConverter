@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace YTSubConverter.Shared
+namespace Arc.YTSubConverter.Shared
 {
     public class Line : ICloneable
     {

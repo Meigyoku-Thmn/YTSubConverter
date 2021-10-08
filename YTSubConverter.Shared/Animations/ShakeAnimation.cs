@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
-using YTSubConverter.Shared.Formats;
-using YTSubConverter.Shared.Formats.Ass;
+using Arc.YTSubConverter.Shared.Formats;
+using Arc.YTSubConverter.Shared.Formats.Ass;
 
-namespace YTSubConverter.Shared.Animations
+namespace Arc.YTSubConverter.Shared.Animations
 {
     public class ShakeAnimation : Animation
     {

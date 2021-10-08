@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using YTSubConverter.Shared.Animations;
+using Arc.YTSubConverter.Shared.Animations;
 
-namespace YTSubConverter.Shared.Formats.Ass.Tags
+namespace Arc.YTSubConverter.Shared.Formats.Ass.Tags
 {
     /// <summary>
     /// Nonstandard tag: \ytshake, \ytshake(radius), \ytshake(radiusX, radiusY), \ytshake(radius, t1, t2), \ytshake(radiusX, radiusY, t1, t2)

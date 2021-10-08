@@ -4,9 +4,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using YTSubConverter.Shared.Util;
+using Arc.YTSubConverter.Shared.Util;
 
-namespace YTSubConverter.Shared.Formats.Ass
+namespace Arc.YTSubConverter.Shared.Formats.Ass
 {
     public class VisualizingAssDocument : AssDocument
     {

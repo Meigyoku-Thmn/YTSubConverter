@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace YTSubConverter.Shared
+namespace Arc.YTSubConverter.Shared
 {
     internal class SectionFormatComparer : IEqualityComparer<Section>
     {

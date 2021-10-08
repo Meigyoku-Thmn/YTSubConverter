@@ -7,7 +7,7 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace YTSubConverter.UI.Mac
+namespace Arc.YTSubConverter.UI.Mac
 {
 	[Register ("ViewController")]
 	partial class ViewController

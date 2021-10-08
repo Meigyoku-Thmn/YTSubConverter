@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using YTSubConverter.Shared.Animations;
+using Arc.YTSubConverter.Shared.Animations;
 
-namespace YTSubConverter.Shared.Formats.Ass.Tags
+namespace Arc.YTSubConverter.Shared.Formats.Ass.Tags
 {
     internal class AssComplexFadeTagHandler : AssTagHandlerBase
     {

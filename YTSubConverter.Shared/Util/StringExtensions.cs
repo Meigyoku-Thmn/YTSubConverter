@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace YTSubConverter.Shared.Util
+namespace Arc.YTSubConverter.Shared.Util
 {
     public static class StringExtensions
     {

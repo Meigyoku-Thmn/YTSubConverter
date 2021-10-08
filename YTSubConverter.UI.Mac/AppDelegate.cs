@@ -1,7 +1,7 @@
 ﻿using AppKit;
 using Foundation;
 
-namespace YTSubConverter.UI.Mac
+namespace Arc.YTSubConverter.UI.Mac
 {
     [Register("AppDelegate")]
     public class AppDelegate : NSApplicationDelegate

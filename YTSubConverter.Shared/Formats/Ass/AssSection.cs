@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using YTSubConverter.Shared.Animations;
+using Arc.YTSubConverter.Shared.Animations;
 
-namespace YTSubConverter.Shared.Formats.Ass
+namespace Arc.YTSubConverter.Shared.Formats.Ass
 {
     public class AssSection : Section
     {

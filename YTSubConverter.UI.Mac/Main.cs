@@ -5,10 +5,10 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using AppKit;
-using YTSubConverter.Shared;
+using Arc.YTSubConverter.Shared;
 using Foundation;
 
-namespace YTSubConverter.UI.Mac
+namespace Arc.YTSubConverter.UI.Mac
 {
     public static class MainClass
     {

@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace YTSubConverter.Shared.Util
+namespace Arc.YTSubConverter.Shared.Util
 {
     internal static class XmlExtensions
     {

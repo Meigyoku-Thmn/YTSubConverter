@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using AppKit;
 using Foundation;
 
-namespace YTSubConverter.UI.Mac
+namespace Arc.YTSubConverter.UI.Mac
 {
     public class SimpleTableViewDataSource<T> : NSTableViewDataSource
     {

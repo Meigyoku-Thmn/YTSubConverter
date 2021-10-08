@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace YTSubConverter.Shared.Formats.Ass.KaraokeTypes
+namespace Arc.YTSubConverter.Shared.Formats.Ass.KaraokeTypes
 {
     public interface IKaraokeType
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace YTSubConverter.Shared.Formats.Ass.Tags
+namespace Arc.YTSubConverter.Shared.Formats.Ass.Tags
 {
     internal class AssKaraokeTagHandler : AssTagHandlerBase
     {
