@@ -110,7 +110,7 @@ namespace YTSubConverter.UI.Win
             catch (Exception ex)
             {
                 MessageBox.Show(string.Format(Resources.FailedToLoadFile0, ex), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                ClearUi();
+                ClearUI(); 
             }
         }
 
