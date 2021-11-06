@@ -120,7 +120,7 @@
             // _btnBackgroundImage
             // 
             this._btnBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnBackgroundImage.Location = new System.Drawing.Point(746, 175);
+            this._btnBackgroundImage.Location = new System.Drawing.Point(745, 175);
             this._btnBackgroundImage.Margin = new System.Windows.Forms.Padding(4);
             this._btnBackgroundImage.Name = "_btnBackgroundImage";
             this._btnBackgroundImage.Size = new System.Drawing.Size(39, 28);
@@ -183,9 +183,9 @@
             this._chkClearFontSize.AutoSize = true;
             this._chkClearFontSize.Location = new System.Drawing.Point(303, 61);
             this._chkClearFontSize.Name = "_chkClearFontSize";
-            this._chkClearFontSize.Size = new System.Drawing.Size(186, 21);
+            this._chkClearFontSize.Size = new System.Drawing.Size(120, 21);
             this._chkClearFontSize.TabIndex = 16;
-            this._chkClearFontSize.Text = "Allow font size overriding";
+            this._chkClearFontSize.Text = "Clear font size";
             this._chkClearFontSize.UseVisualStyleBackColor = true;
             this._chkClearFontSize.CheckedChanged += new System.EventHandler(this._chkClearFontSize_CheckedChanged);
             // 
@@ -194,9 +194,9 @@
             this._chkKeepFontName.AutoSize = true;
             this._chkKeepFontName.Location = new System.Drawing.Point(303, 34);
             this._chkKeepFontName.Name = "_chkKeepFontName";
-            this._chkKeepFontName.Size = new System.Drawing.Size(214, 21);
+            this._chkKeepFontName.Size = new System.Drawing.Size(274, 21);
             this._chkKeepFontName.TabIndex = 15;
-            this._chkKeepFontName.Text = "Prevent font family overriding";
+            this._chkKeepFontName.Text = "Pin font name to avoid being overriden";
             this._chkKeepFontName.UseVisualStyleBackColor = true;
             this._chkKeepFontName.CheckedChanged += new System.EventHandler(this._chkKeepFontName_CheckedChanged);
             // 
@@ -226,9 +226,9 @@
             this._chkClearBGAndFGStyle.AutoSize = true;
             this._chkClearBGAndFGStyle.Location = new System.Drawing.Point(303, 88);
             this._chkClearBGAndFGStyle.Name = "_chkClearBGAndFGStyle";
-            this._chkClearBGAndFGStyle.Size = new System.Drawing.Size(310, 21);
+            this._chkClearBGAndFGStyle.Size = new System.Drawing.Size(277, 21);
             this._chkClearBGAndFGStyle.TabIndex = 12;
-            this._chkClearBGAndFGStyle.Text = "Allow background and foreground overriding";
+            this._chkClearBGAndFGStyle.Text = "Clear background and foreground style";
             this._chkClearBGAndFGStyle.UseVisualStyleBackColor = true;
             this._chkClearBGAndFGStyle.CheckedChanged += new System.EventHandler(this._chkClearBGAndFGStyle_CheckedChanged);
             // 

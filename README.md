@@ -1,8 +1,8 @@
 # About this fork
-Add 4 additional advanced settings that you can apply for each style:
-- Prevent font family from being overriden
-- Allow font size overriding
-- Allow background and foreground style overriding
+It has 4 additional advanced settings that you can apply for each style:
+- Pin font name to avoid being overriden
+- Clear font size
+- Clear background and foreground style
 - Don't use space in padding
 
 ---
