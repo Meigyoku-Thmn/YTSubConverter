@@ -15,17 +15,19 @@ namespace YTSubConverter.Shared.Util
             return date1 > date2 ? date1 : date2;
         }
 
-        public static int StartTimeToFrame(DateTime time)
+        public static int StartTimeToFrame(DateTime time, bool preferRoundUp = true)
         {
             if (time <= SubtitleDocument.TimeBase)
                 return 0;
 
-            return EndTimeToFrame(time) + 1;
+            return EndTimeToFrame(time, preferRoundUp) + 1;
         }
 
-        public static int EndTimeToFrame(DateTime time)
+        public static int EndTimeToFrame(DateTime time, bool preferRoundUp = true)
         {
-            return (int)((time.TimeOfDay.TotalMilliseconds + 1) / 33.36666666666667);
+            if (preferRoundUp == true)
+                return (int)((time.TimeOfDay.TotalMilliseconds + 1) / GlobalSettings.FrameDuration);
+            return (int)(time.TimeOfDay.TotalMilliseconds / GlobalSettings.FrameDuration);
         }
 
         public static DateTime FrameToStartTime(int frame)
@@ -33,12 +35,12 @@ namespace YTSubConverter.Shared.Util
             if (frame <= 0)
                 return SubtitleDocument.TimeBase;
 
-            return FrameToTime(frame).AddMilliseconds(-16);
+            return FrameToTime(frame).AddMilliseconds(-GlobalSettings.HalfFrameDuration);
         }
 
         public static DateTime FrameToEndTime(int frame)
         {
-            return FrameToTime(frame).AddMilliseconds(16);
+            return FrameToTime(frame).AddMilliseconds(GlobalSettings.HalfFrameDuration);
         }
 
         private static DateTime FrameToTime(int frame)
@@ -46,16 +48,19 @@ namespace YTSubConverter.Shared.Util
             if (frame == 0)
                 return SubtitleDocument.TimeBase;
 
-            int ms = (int)(frame * 33.36666666666667);
+            int ms = (int)(frame * GlobalSettings.FrameDuration);
             return SubtitleDocument.TimeBase + TimeSpan.FromMilliseconds(ms);
         }
 
-        public static DateTime RoundTimeToFrameCenter(DateTime time)
+        public static DateTime RoundTimeToFrameCenter(DateTime time, bool preferRoundUp = true)
         {
             if (time <= SubtitleDocument.TimeBase)
                 return SubtitleDocument.TimeBase;
 
-            return FrameToStartTime(StartTimeToFrame(time));
+            if (GlobalSettings.DisableTimeRounding)
+                return time;
+
+            return FrameToStartTime(StartTimeToFrame(time, preferRoundUp));
         }
     }
 }

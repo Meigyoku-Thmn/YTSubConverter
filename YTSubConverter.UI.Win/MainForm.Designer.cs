@@ -71,6 +71,11 @@
             this._chkAutoConvert = new System.Windows.Forms.CheckBox();
             this._subtitleRenameWatcher = new System.IO.FileSystemWatcher();
             this._subtitleModifyWatcher = new System.IO.FileSystemWatcher();
+            this._chkDisableTimeRounding = new System.Windows.Forms.CheckBox();
+            this._numFPS = new System.Windows.Forms.NumericUpDown();
+            this._pnlFPS = new System.Windows.Forms.Label();
+            this._pnlFrameStep = new System.Windows.Forms.Label();
+            this._numFrameStep = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this._spltStyleOptions)).BeginInit();
             this._spltStyleOptions.Panel1.SuspendLayout();
             this._spltStyleOptions.Panel2.SuspendLayout();
@@ -81,6 +86,8 @@
             this._grpStyleOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._subtitleRenameWatcher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._subtitleModifyWatcher)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._numFPS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._numFrameStep)).BeginInit();
             this.SuspendLayout();
             // 
             // _spltStyleOptions
@@ -120,7 +127,7 @@
             // _btnBackgroundImage
             // 
             this._btnBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnBackgroundImage.Location = new System.Drawing.Point(745, 175);
+            this._btnBackgroundImage.Location = new System.Drawing.Point(741, 175);
             this._btnBackgroundImage.Margin = new System.Windows.Forms.Padding(4);
             this._btnBackgroundImage.Name = "_btnBackgroundImage";
             this._btnBackgroundImage.Size = new System.Drawing.Size(39, 28);
@@ -470,10 +477,10 @@
             // 
             this._lblConversionSuccess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this._lblConversionSuccess.ForeColor = System.Drawing.Color.Green;
-            this._lblConversionSuccess.Location = new System.Drawing.Point(205, 532);
+            this._lblConversionSuccess.Location = new System.Drawing.Point(287, 532);
             this._lblConversionSuccess.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblConversionSuccess.Name = "_lblConversionSuccess";
-            this._lblConversionSuccess.Size = new System.Drawing.Size(671, 51);
+            this._lblConversionSuccess.Size = new System.Drawing.Size(589, 51);
             this._lblConversionSuccess.TabIndex = 6;
             this._lblConversionSuccess.Text = "Status label";
             this._lblConversionSuccess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -532,12 +539,80 @@
             this._subtitleModifyWatcher.SynchronizingObject = this;
             this._subtitleModifyWatcher.Changed += new System.IO.FileSystemEventHandler(this.HandleFileModified);
             // 
+            // _chkDisableTimeRounding
+            // 
+            this._chkDisableTimeRounding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._chkDisableTimeRounding.AutoSize = true;
+            this._chkDisableTimeRounding.Location = new System.Drawing.Point(13, 532);
+            this._chkDisableTimeRounding.Margin = new System.Windows.Forms.Padding(4);
+            this._chkDisableTimeRounding.Name = "_chkDisableTimeRounding";
+            this._chkDisableTimeRounding.Size = new System.Drawing.Size(167, 21);
+            this._chkDisableTimeRounding.TabIndex = 4;
+            this._chkDisableTimeRounding.Text = "Disable time rounding";
+            this._chkDisableTimeRounding.UseVisualStyleBackColor = true;
+            this._chkDisableTimeRounding.CheckedChanged += new System.EventHandler(this._chkDisableTimeRounding_CheckedChanged);
+            // 
+            // _numFPS
+            // 
+            this._numFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._numFPS.Location = new System.Drawing.Point(58, 561);
+            this._numFPS.Name = "_numFPS";
+            this._numFPS.Size = new System.Drawing.Size(58, 22);
+            this._numFPS.TabIndex = 8;
+            this._numFPS.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this._numFPS.ValueChanged += new System.EventHandler(this._numFPS_ValueChanged);
+            // 
+            // _pnlFPS
+            // 
+            this._pnlFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._pnlFPS.AutoSize = true;
+            this._pnlFPS.Location = new System.Drawing.Point(13, 562);
+            this._pnlFPS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._pnlFPS.Name = "_pnlFPS";
+            this._pnlFPS.Size = new System.Drawing.Size(38, 17);
+            this._pnlFPS.TabIndex = 17;
+            this._pnlFPS.Text = "FPS:";
+            // 
+            // _pnlFrameStep
+            // 
+            this._pnlFrameStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._pnlFrameStep.AutoSize = true;
+            this._pnlFrameStep.Location = new System.Drawing.Point(131, 562);
+            this._pnlFrameStep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._pnlFrameStep.Name = "_pnlFrameStep";
+            this._pnlFrameStep.Size = new System.Drawing.Size(83, 17);
+            this._pnlFrameStep.TabIndex = 20;
+            this._pnlFrameStep.Text = "Frame step:";
+            // 
+            // _numFrameStep
+            // 
+            this._numFrameStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._numFrameStep.Location = new System.Drawing.Point(222, 561);
+            this._numFrameStep.Name = "_numFrameStep";
+            this._numFrameStep.Size = new System.Drawing.Size(58, 22);
+            this._numFrameStep.TabIndex = 19;
+            this._numFrameStep.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this._numFrameStep.ValueChanged += new System.EventHandler(this._numFrameStep_ValueChanged);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1252, 599);
+            this.Controls.Add(this._pnlFrameStep);
+            this.Controls.Add(this._numFrameStep);
+            this.Controls.Add(this._pnlFPS);
+            this.Controls.Add(this._numFPS);
+            this.Controls.Add(this._chkDisableTimeRounding);
             this.Controls.Add(this._chkAutoConvert);
             this.Controls.Add(this._btnConvert);
             this.Controls.Add(this._chkStyleOptions);
@@ -566,6 +641,8 @@
             this._grpStyleOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._subtitleRenameWatcher)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._subtitleModifyWatcher)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._numFPS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._numFrameStep)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -614,5 +691,10 @@
         private System.Windows.Forms.Label _lblAdvancedConfig;
         private System.Windows.Forms.CheckBox _chkKeepFontName;
         private System.Windows.Forms.CheckBox _chkClearFontSize;
+        private System.Windows.Forms.CheckBox _chkDisableTimeRounding;
+        private System.Windows.Forms.Label _pnlFPS;
+        private System.Windows.Forms.NumericUpDown _numFPS;
+        private System.Windows.Forms.Label _pnlFrameStep;
+        private System.Windows.Forms.NumericUpDown _numFrameStep;
     }
 }

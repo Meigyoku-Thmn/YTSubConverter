@@ -152,23 +152,24 @@ namespace YTSubConverter.Shared.Animations
             int rangeStartFrame = TimeUtil.StartTimeToFrame(timeRange.Start);
             int rangeEndFrame = TimeUtil.EndTimeToFrame(timeRange.End);
 
-            const int frameStepSize = 2;
-            int subStepFrames = (rangeEndFrame + 1 - rangeStartFrame) % frameStepSize;
-            int lastIterationFrame = rangeEndFrame + 1 - subStepFrames - frameStepSize;
+            int subStepFrames = (rangeEndFrame + 1 - rangeStartFrame) % GlobalSettings.FrameStep;
+            int lastIterationFrame = rangeEndFrame + 1 - subStepFrames - GlobalSettings.FrameStep;
 
             bool needTextReset = animations.Any(a => a.Animation.AffectsText);
 
             AssLine frameLine = originalLine;
-            for (int frame = rangeStartFrame; frame <= lastIterationFrame; frame += frameStepSize)
+            for (int frame = rangeStartFrame; frame <= lastIterationFrame; frame += GlobalSettings.FrameStep)
             {
                 frameLine = (AssLine)frameLine.Clone();
                 frameLine.Start = TimeUtil.FrameToStartTime(frame);
-                frameLine.End = frame < lastIterationFrame ? TimeUtil.FrameToEndTime(frame + frameStepSize - 1) : timeRange.End;
+                frameLine.End = frame < lastIterationFrame
+                    ? TimeUtil.FrameToEndTime(frame + GlobalSettings.FrameStep - 1)
+                    : timeRange.End;
                 frameLine.Position = originalLine.Position ?? document.GetDefaultPosition(originalLine.AnchorPoint);
                 if (needTextReset)
                     ResetText(frameLine, originalLine);
 
-                float interpFrame = frame + (frameStepSize - 1) / 2.0f;
+                float interpFrame = frame + (GlobalSettings.FrameStep - 1) / 2.0f;
 
                 foreach (AnimationWithSectionIndex animWithSection in animations)
                 {
@@ -179,7 +180,7 @@ namespace YTSubConverter.Shared.Animations
                         float t = (interpFrame - animStartFrame) / (animEndFrame - animStartFrame);
                         ApplyAnimation(frameLine, animWithSection, t);
                     }
-                    else if (interpFrame >= animEndFrame && interpFrame < animEndFrame + frameStepSize)
+                    else if (interpFrame >= animEndFrame && interpFrame < animEndFrame + GlobalSettings.FrameStep)
                     {
                         ApplyAnimation(frameLine, animWithSection, 1);
                     }

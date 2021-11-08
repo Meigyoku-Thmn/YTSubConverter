@@ -39,6 +39,7 @@ namespace YTSubConverter.UI.Win
 
             ExpandCollapseStyleOptions();
             ClearUI();
+            LoadGlobalSettings();
         }
 
         private void LocalizeUI()
@@ -173,6 +174,13 @@ namespace YTSubConverter.UI.Win
             _chkAutoConvert.Enabled = false;
             _chkAutoConvert.Checked = false;
             _btnConvert.Enabled = false;
+        }
+
+        private void LoadGlobalSettings()
+        {
+            _chkDisableTimeRounding.Checked = GlobalSettings.DisableTimeRounding;
+            _numFPS.Value = GlobalSettings.FPS;
+            _numFrameStep.Value = GlobalSettings.FrameStep;
         }
 
         private void _lstStyles_SelectedIndexChanged(object sender, EventArgs e)
@@ -528,6 +536,21 @@ namespace YTSubConverter.UI.Win
                 _styleOptions.Where(p => !_builtinStyleNames.Contains(p.Key))
                              .Select(p => p.Value)
             );
+        }
+
+        private void _chkDisableTimeRounding_CheckedChanged(object sender, EventArgs e)
+        {
+            GlobalSettings.DisableTimeRounding = _chkDisableTimeRounding.Checked;
+        }
+
+        private void _numFPS_ValueChanged(object sender, EventArgs e)
+        {
+            GlobalSettings.FPS = _numFPS.Value;
+        }
+
+        private void _numFrameStep_ValueChanged(object sender, EventArgs e)
+        {
+            GlobalSettings.FrameStep = (int)_numFrameStep.Value;
         }
     }
 }
