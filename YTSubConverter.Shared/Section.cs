@@ -45,6 +45,18 @@ namespace YTSubConverter.Shared
             set;
         }
 
+        public bool AllowEdgeTypeOverriding
+        { 
+            get;
+            set;
+        }
+
+        public bool PreventEdgeTypeOverriding
+        { 
+            get;
+            set;
+        }
+
         public string Text
         {
             get;
@@ -141,6 +153,8 @@ namespace YTSubConverter.Shared
             AllowFontSizeOverriding = section.AllowFontSizeOverriding;
             AllowFGAndBGOverriding = section.AllowFGAndBGOverriding;
             NoSpaceInPadding = section.NoSpaceInPadding;
+            AllowEdgeTypeOverriding = section.AllowEdgeTypeOverriding;
+            PreventEdgeTypeOverriding = section.PreventEdgeTypeOverriding;
             Text = section.Text;
             Font = section.Font;
             Scale = section.Scale;

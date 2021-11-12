@@ -777,25 +777,32 @@ namespace YTSubConverter.Shared.Formats
                 writer.WriteAttributeString("bo", format.BackColor.A.ToString());
             }
 
-            if (format.ShadowColors.Count > 0)
+            if (!format.AllowEdgeTypeOverriding)
             {
-                if (format.ShadowColors.Count > 1)
-                    throw new NotSupportedException("YTT lines must be reduced to one shadow color before saving");
-
-                KeyValuePair<ShadowType, Color> shadowColor = format.ShadowColors.First();
-                if (shadowColor.Value.A > 0)
+                if (format.ShadowColors.Count > 0)
                 {
-                    writer.WriteAttributeString("et", GetEdgeTypeId(shadowColor.Key).ToString());
+                    if (format.ShadowColors.Count > 1)
+                        throw new NotSupportedException("YTT lines must be reduced to one shadow color before saving");
 
-                    // YouTube's handling of shadow transparency is inconsistent: if you specify an "ec" attribute,
-                    // the shadow is fully opaque, but if you don't (resulting in a default color of #222222),
-                    // it follows the foreground transparency. Because of this, we only write the "ec" attribute
-                    // (and lose transparency support) if we have to.
-                    if ((shadowColor.Value.ToArgb() & 0xFFFFFF) != 0x222222 ||
-                        shadowColor.Value.A != format.ForeColor.A)
+                    KeyValuePair<ShadowType, Color> shadowColor = format.ShadowColors.First();
+                    if (shadowColor.Value.A > 0)
                     {
-                        writer.WriteAttributeString("ec", ColorUtil.ToHtml(shadowColor.Value));
+                        writer.WriteAttributeString("et", GetEdgeTypeId(shadowColor.Key).ToString());
+
+                        // YouTube's handling of shadow transparency is inconsistent: if you specify an "ec" attribute,
+                        // the shadow is fully opaque, but if you don't (resulting in a default color of #222222),
+                        // it follows the foreground transparency. Because of this, we only write the "ec" attribute
+                        // (and lose transparency support) if we have to.
+                        if ((shadowColor.Value.ToArgb() & 0xFFFFFF) != 0x222222 ||
+                            shadowColor.Value.A != format.ForeColor.A)
+                        {
+                            writer.WriteAttributeString("ec", ColorUtil.ToHtml(shadowColor.Value));
+                        }
                     }
+                }
+                else if (format.PreventEdgeTypeOverriding)
+                {
+                    writer.WriteAttributeString("et", "0");
                 }
             }
 

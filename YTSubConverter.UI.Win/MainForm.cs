@@ -76,8 +76,7 @@ namespace YTSubConverter.UI.Win
             }
         }
 
-        private AssStyleOptions SelectedStyleOptions
-        {
+        private AssStyleOptions SelectedStyleOptions {
             get { return (AssStyleOptions)_lstStyles.SelectedItem; }
         }
 
@@ -111,7 +110,7 @@ namespace YTSubConverter.UI.Win
             catch (Exception ex)
             {
                 MessageBox.Show(string.Format(Resources.FailedToLoadFile0, ex), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                ClearUI(); 
+                ClearUI();
             }
         }
 
@@ -238,6 +237,9 @@ namespace YTSubConverter.UI.Win
             _chkClearFontSize.Checked = options.AllowFontSizeOverriding;
             _chkClearBGAndFGStyle.Checked = options.AllowFGAndBGOverriding;
             _chkNoSpacePadding.Checked = options.NoSpaceInPadding;
+
+            _chkClearEdgeType.Checked = options.AllowEdgeTypeOverriding;
+            _chkPinEdgeType.Checked = options.PreventEdgeTypeOverriding;
 
             UpdateBackgroundImageButton();
 
@@ -369,6 +371,17 @@ namespace YTSubConverter.UI.Win
         private void _chkNoSpacePadding_CheckedChanged(object sender, EventArgs e)
         {
             SelectedStyleOptions.NoSpaceInPadding = _chkNoSpacePadding.Checked;
+        }
+
+        private void _chkClearEdgeType_CheckedChanged(object sender, EventArgs e)
+        {
+            SelectedStyleOptions.AllowEdgeTypeOverriding = _chkClearEdgeType.Checked;
+            _chkPinEdgeType.Enabled = !_chkClearEdgeType.Checked;
+        }
+
+        private void _chkPinEdgeType_CheckedChanged(object sender, EventArgs e)
+        {
+            SelectedStyleOptions.PreventEdgeTypeOverriding = _chkPinEdgeType.Checked;
         }
 
         private void _btnBackgroundImage_Click(object sender, EventArgs e)
@@ -552,5 +565,6 @@ namespace YTSubConverter.UI.Win
         {
             GlobalSettings.FrameStep = (int)_numFrameStep.Value;
         }
+
     }
 }

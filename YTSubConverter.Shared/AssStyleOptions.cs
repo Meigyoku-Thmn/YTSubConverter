@@ -144,6 +144,10 @@ namespace YTSubConverter.Shared
 
         public bool NoSpaceInPadding { get; set; }
 
+        public bool AllowEdgeTypeOverriding { get; set; }
+
+        public bool PreventEdgeTypeOverriding { get; set; }
+
         public string BackgroundImagePath
         {
             get;

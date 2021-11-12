@@ -311,6 +311,8 @@ namespace YTSubConverter.Shared.Formats.Ass
             section.AllowFontSizeOverriding = options?.AllowFontSizeOverriding ?? false;
             section.AllowFGAndBGOverriding = options?.AllowFGAndBGOverriding ?? false;
             section.NoSpaceInPadding = options?.NoSpaceInPadding ?? false;
+            section.AllowEdgeTypeOverriding = options?.AllowEdgeTypeOverriding ?? false;
+            section.PreventEdgeTypeOverriding = options?.PreventEdgeTypeOverriding ?? false;
 
             section.Font = style.Font;
             section.Scale = style.LineHeight / DefaultStyle.LineHeight;

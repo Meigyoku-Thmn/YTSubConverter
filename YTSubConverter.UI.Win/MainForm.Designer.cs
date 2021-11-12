@@ -76,6 +76,8 @@
             this._pnlFPS = new System.Windows.Forms.Label();
             this._pnlFrameStep = new System.Windows.Forms.Label();
             this._numFrameStep = new System.Windows.Forms.NumericUpDown();
+            this._chkClearEdgeType = new System.Windows.Forms.CheckBox();
+            this._chkPinEdgeType = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this._spltStyleOptions)).BeginInit();
             this._spltStyleOptions.Panel1.SuspendLayout();
             this._spltStyleOptions.Panel2.SuspendLayout();
@@ -127,7 +129,7 @@
             // _btnBackgroundImage
             // 
             this._btnBackgroundImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnBackgroundImage.Location = new System.Drawing.Point(741, 175);
+            this._btnBackgroundImage.Location = new System.Drawing.Point(740, 175);
             this._btnBackgroundImage.Margin = new System.Windows.Forms.Padding(4);
             this._btnBackgroundImage.Name = "_btnBackgroundImage";
             this._btnBackgroundImage.Size = new System.Drawing.Size(39, 28);
@@ -162,6 +164,8 @@
             // 
             // _pnlKaraokeType
             // 
+            this._pnlKaraokeType.Controls.Add(this._chkPinEdgeType);
+            this._pnlKaraokeType.Controls.Add(this._chkClearEdgeType);
             this._pnlKaraokeType.Controls.Add(this._chkClearFontSize);
             this._pnlKaraokeType.Controls.Add(this._chkKeepFontName);
             this._pnlKaraokeType.Controls.Add(this._lblAdvancedConfig);
@@ -188,7 +192,7 @@
             // _chkClearFontSize
             // 
             this._chkClearFontSize.AutoSize = true;
-            this._chkClearFontSize.Location = new System.Drawing.Point(303, 61);
+            this._chkClearFontSize.Location = new System.Drawing.Point(294, 114);
             this._chkClearFontSize.Name = "_chkClearFontSize";
             this._chkClearFontSize.Size = new System.Drawing.Size(120, 21);
             this._chkClearFontSize.TabIndex = 16;
@@ -199,7 +203,7 @@
             // _chkKeepFontName
             // 
             this._chkKeepFontName.AutoSize = true;
-            this._chkKeepFontName.Location = new System.Drawing.Point(303, 34);
+            this._chkKeepFontName.Location = new System.Drawing.Point(294, 34);
             this._chkKeepFontName.Name = "_chkKeepFontName";
             this._chkKeepFontName.Size = new System.Drawing.Size(274, 21);
             this._chkKeepFontName.TabIndex = 15;
@@ -210,7 +214,7 @@
             // _lblAdvancedConfig
             // 
             this._lblAdvancedConfig.AutoSize = true;
-            this._lblAdvancedConfig.Location = new System.Drawing.Point(285, 10);
+            this._lblAdvancedConfig.Location = new System.Drawing.Point(281, 10);
             this._lblAdvancedConfig.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblAdvancedConfig.Name = "_lblAdvancedConfig";
             this._lblAdvancedConfig.Size = new System.Drawing.Size(254, 17);
@@ -220,7 +224,7 @@
             // _chkNoSpacePadding
             // 
             this._chkNoSpacePadding.AutoSize = true;
-            this._chkNoSpacePadding.Location = new System.Drawing.Point(303, 115);
+            this._chkNoSpacePadding.Location = new System.Drawing.Point(294, 140);
             this._chkNoSpacePadding.Name = "_chkNoSpacePadding";
             this._chkNoSpacePadding.Size = new System.Drawing.Size(202, 21);
             this._chkNoSpacePadding.TabIndex = 14;
@@ -231,7 +235,7 @@
             // _chkClearBGAndFGStyle
             // 
             this._chkClearBGAndFGStyle.AutoSize = true;
-            this._chkClearBGAndFGStyle.Location = new System.Drawing.Point(303, 88);
+            this._chkClearBGAndFGStyle.Location = new System.Drawing.Point(294, 87);
             this._chkClearBGAndFGStyle.Name = "_chkClearBGAndFGStyle";
             this._chkClearBGAndFGStyle.Size = new System.Drawing.Size(277, 21);
             this._chkClearBGAndFGStyle.TabIndex = 12;
@@ -602,6 +606,28 @@
             0});
             this._numFrameStep.ValueChanged += new System.EventHandler(this._numFrameStep_ValueChanged);
             // 
+            // _chkClearEdgeType
+            // 
+            this._chkClearEdgeType.AutoSize = true;
+            this._chkClearEdgeType.Location = new System.Drawing.Point(294, 61);
+            this._chkClearEdgeType.Name = "_chkClearEdgeType";
+            this._chkClearEdgeType.Size = new System.Drawing.Size(158, 21);
+            this._chkClearEdgeType.TabIndex = 17;
+            this._chkClearEdgeType.Text = "Clear font edge type";
+            this._chkClearEdgeType.UseVisualStyleBackColor = true;
+            this._chkClearEdgeType.CheckedChanged += new System.EventHandler(this._chkClearEdgeType_CheckedChanged);
+            // 
+            // _chkPinEdgeType
+            // 
+            this._chkPinEdgeType.AutoSize = true;
+            this._chkPinEdgeType.Location = new System.Drawing.Point(454, 61);
+            this._chkPinEdgeType.Name = "_chkPinEdgeType";
+            this._chkPinEdgeType.Size = new System.Drawing.Size(145, 21);
+            this._chkPinEdgeType.TabIndex = 18;
+            this._chkPinEdgeType.Text = "Pin font edge type";
+            this._chkPinEdgeType.UseVisualStyleBackColor = true;
+            this._chkPinEdgeType.CheckedChanged += new System.EventHandler(this._chkPinEdgeType_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -696,5 +722,7 @@
         private System.Windows.Forms.NumericUpDown _numFPS;
         private System.Windows.Forms.Label _pnlFrameStep;
         private System.Windows.Forms.NumericUpDown _numFrameStep;
+        private System.Windows.Forms.CheckBox _chkPinEdgeType;
+        private System.Windows.Forms.CheckBox _chkClearEdgeType;
     }
 }
