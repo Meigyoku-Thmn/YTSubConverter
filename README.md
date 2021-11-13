@@ -1,10 +1,15 @@
 # About this fork
-It has 4 additional advanced settings that you can apply for each style:
+It has additional advanced settings that you can apply for each style:
 - Pin font name to avoid being overriden
-- Clear font size
+- Pin or clear font edge type
 - Clear background and foreground style
+- Clear font size
 - Don't use space in padding
 
+And several global settings:
+- Disable time rounding
+- Set FPS
+- Set frame step
 ---
 
 # YTSubConverter
