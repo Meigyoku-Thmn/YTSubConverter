@@ -435,6 +435,49 @@ namespace YTSubConverter.UI.Linux
             }
         }
 
+        private void MainWindow_KeyPressEvent(object o, KeyPressEventArgs args)
+        {
+            if ((args.Event.State & Gdk.ModifierType.ControlMask) == 0)
+                return;
+
+            switch (args.Event.Key)
+            {
+                case Gdk.Key.o:
+                    FileChooserNative dialog = new FileChooserNative(null, this, FileChooserAction.Open, null, null);
+                    dialog.SetCurrentFolder(_btnInputFile.CurrentFolder);
+                    foreach (FileFilter filter in _btnInputFile.Filters)
+                    {
+                        dialog.AddFilter(filter);
+                    }
+
+                    if (dialog.Run() == (int)ResponseType.Accept)
+                    {
+                        _btnInputFile.UnselectAll();
+                        _btnInputFile.SelectFilename(dialog.Filename);
+                        _btnInputFile.SetCurrentFolder(dialog.CurrentFolder);
+                        _btnInputFile_FileSet(_btnInputFile, EventArgs.Empty);
+                    }
+                    dialog.Destroy();
+                    break;
+
+                case Gdk.Key.s:
+                    if (_btnConvert.Sensitive)
+                        _btnConvert_Clicked(_btnConvert, EventArgs.Empty);
+
+                    break;
+
+                case Gdk.Key.a:
+                    if (_chkAutoConvert.Sensitive)
+                        _chkAutoConvert.Active = !_chkAutoConvert.Active;
+
+                    break;
+
+                case Gdk.Key.q:
+                    Close();
+                    break;
+            }
+        }
+
         private void MainWindow_DragDataReceived(object sender, DragDataReceivedArgs e)
         {
             e.RetVal = false;
